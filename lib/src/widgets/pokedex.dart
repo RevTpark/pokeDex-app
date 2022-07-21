@@ -61,7 +61,7 @@ class _PokeDexFrameState extends State<PokeDexFrame> with TickerProviderStateMix
                 decoration: const BoxDecoration(
                     color: Color.fromRGBO(173, 236, 255, 0.49)
                 ),
-                child: provider.loadingStatus()? null: _pages[provider.getCurrentScreen().index],
+                child: provider.loadingStatus? null: _pages[provider.currentScreen.index],
               ),
             ),
           ),
