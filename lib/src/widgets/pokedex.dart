@@ -65,7 +65,7 @@ class _PokeDexFrameState extends State<PokeDexFrame> with TickerProviderStateMix
               ),
             ),
           ),
-          provider.loadingStatus()?
+          provider.loadingStatus?
           RotationTransition(
             turns: _animationController,
             child: SizedBox(
