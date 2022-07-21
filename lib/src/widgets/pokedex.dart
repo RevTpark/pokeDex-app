@@ -14,7 +14,24 @@ class PokeDexFrame extends StatefulWidget {
   State<PokeDexFrame> createState() => _PokeDexFrameState();
 }
 
-class _PokeDexFrameState extends State<PokeDexFrame> {
+class _PokeDexFrameState extends State<PokeDexFrame> with TickerProviderStateMixin {
+  late final AnimationController _animationController;
+
+  @override
+  void dispose() {
+    _animationController.dispose();
+    super.dispose();
+  }
+
+  @override
+  void initState(){
+    super.initState();
+    _animationController = AnimationController(
+      duration: const Duration(seconds: 5),
+      vsync: this,)
+      ..repeat();
+  }
+
   @override
   Widget build(BuildContext context) {
     double width = MediaQuery.of(context).size.width;
@@ -31,23 +48,34 @@ class _PokeDexFrameState extends State<PokeDexFrame> {
       width: width,
       padding: EdgeInsets.fromLTRB(20.w, 40.w, 20.w, 40.w),
       child: Stack(
+        alignment: Alignment.center,
         children: [
           Center(
             child: BackdropFilter(
               filter: ImageFilter.blur(sigmaX: 2, sigmaY: 2),
-              child: Container(
-                height: height*0.7,
+              child: AnimatedContainer(
+                duration: const Duration(seconds: 3),
+                height: provider.loadingStatus()? height*0.4: height*0.7,
                 width: width,
                 margin: EdgeInsets.only(left: 10.w, right: 10.w),
                 decoration: const BoxDecoration(
                     color: Color.fromRGBO(173, 236, 255, 0.49)
                 ),
-                child: _pages[provider.getCurrentScreen().index],
+                child: provider.loadingStatus()? null: _pages[provider.getCurrentScreen().index],
               ),
             ),
           ),
-          Positioned(
-              top: 0,
+          provider.loadingStatus()?
+          RotationTransition(
+            turns: _animationController,
+            child: SizedBox(
+              width: 82.w,
+              child: Image.asset("assets/images/pokeball_loader.png"),
+            ),
+          ):Container(),
+          AnimatedPositioned(
+              top: provider.loadingStatus()? height/4: 0,
+              duration: const Duration(seconds: 3),
               child: SizedBox(
                 width: 374.w,
                 child: Image.asset(
@@ -55,13 +83,13 @@ class _PokeDexFrameState extends State<PokeDexFrame> {
                 ),
               )
           ),
-          Positioned(
-              bottom: 0,
+          AnimatedPositioned(
+              bottom: provider.loadingStatus()? height/4: 0,
+              duration: const Duration(seconds: 3),
               child: SizedBox(
                 width: 374.w,
                 child: Image.asset(
                   "assets/images/dexframe_bottom.png",
-                  fit: BoxFit.cover,
                 ),
               )
           ),

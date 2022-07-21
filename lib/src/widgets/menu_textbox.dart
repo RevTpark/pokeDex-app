@@ -10,9 +10,12 @@ class MenuTextBox extends StatelessWidget {
   final String title;
   final ScreenLayout changeTo;
 
-  handleClick(BuildContext context){
+  void handleClick(BuildContext context) async {
     NavProvider provider = Provider.of<NavProvider>(context, listen: false);
-    provider.changeLayout(changeTo);
+    provider.updateLoading();
+    await Future.delayed(const Duration(seconds: 5), () {
+      provider.changeLayout(changeTo);
+    });
   }
 
   @override
