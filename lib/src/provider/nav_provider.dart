@@ -21,8 +21,5 @@ class NavProvider extends ChangeNotifier{
     notifyListeners();
   }
 
-  ScreenLayout getCurrentScreen(){
-    ScreenLayout currentScreen = _currentScreen;
-    return currentScreen;
-  }
+  ScreenLayout get currentScreen => _currentScreen;
 }
