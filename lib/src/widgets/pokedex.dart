@@ -55,7 +55,7 @@ class _PokeDexFrameState extends State<PokeDexFrame> with TickerProviderStateMix
               filter: ImageFilter.blur(sigmaX: 2, sigmaY: 2),
               child: AnimatedContainer(
                 duration: const Duration(seconds: 3),
-                height: provider.loadingStatus()? height*0.4: height*0.7,
+                height: provider.loadingStatus? height*0.4: height*0.7,
                 width: width,
                 margin: EdgeInsets.only(left: 10.w, right: 10.w),
                 decoration: const BoxDecoration(
