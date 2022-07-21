@@ -10,10 +10,7 @@ class NavProvider extends ChangeNotifier{
     notifyListeners();
   }
 
-  bool loadingStatus(){
-    bool isLoading = _isLoading;
-    return isLoading;
-  }
+  bool get loadingStatus => _isLoading;
 
   void changeLayout(ScreenLayout newScreen){
     _currentScreen = newScreen;
