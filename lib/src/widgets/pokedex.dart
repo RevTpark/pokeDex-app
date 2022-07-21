@@ -84,7 +84,7 @@ class _PokeDexFrameState extends State<PokeDexFrame> with TickerProviderStateMix
               )
           ),
           AnimatedPositioned(
-              bottom: provider.loadingStatus()? height/4: 0,
+              bottom: provider.loadingStatus? height/4: 0,
               duration: const Duration(seconds: 3),
               child: SizedBox(
                 width: 374.w,
