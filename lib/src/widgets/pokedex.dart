@@ -36,7 +36,7 @@ class _PokeDexFrameState extends State<PokeDexFrame> with TickerProviderStateMix
   Widget build(BuildContext context) {
     double width = MediaQuery.of(context).size.width;
     double height = MediaQuery.of(context).size.height;
-    List<Widget> _pages = <Widget>[
+    List<Widget> pages = <Widget>[
       const HomeDisplay(),
       const GuessThatPokemonDisplay(),
       const GuessThatPokemonDisplay(),
@@ -54,14 +54,14 @@ class _PokeDexFrameState extends State<PokeDexFrame> with TickerProviderStateMix
             child: BackdropFilter(
               filter: ImageFilter.blur(sigmaX: 2, sigmaY: 2),
               child: AnimatedContainer(
-                duration: const Duration(seconds: 3),
+                duration: const Duration(seconds: 2),
                 height: provider.loadingStatus? height*0.4: height*0.7,
                 width: width,
                 margin: EdgeInsets.only(left: 10.w, right: 10.w),
                 decoration: const BoxDecoration(
                     color: Color.fromRGBO(173, 236, 255, 0.49)
                 ),
-                child: provider.loadingStatus? null: _pages[provider.currentScreen.index],
+                child: provider.loadingStatus? null: pages[provider.currentScreen.index],
               ),
             ),
           ),
@@ -75,7 +75,7 @@ class _PokeDexFrameState extends State<PokeDexFrame> with TickerProviderStateMix
           ):Container(),
           AnimatedPositioned(
               top: provider.loadingStatus? height/4: 0,
-              duration: const Duration(seconds: 3),
+              duration: const Duration(seconds: 2),
               child: SizedBox(
                 width: 374.w,
                 child: Image.asset(
@@ -85,7 +85,7 @@ class _PokeDexFrameState extends State<PokeDexFrame> with TickerProviderStateMix
           ),
           AnimatedPositioned(
               bottom: provider.loadingStatus? height/4: 0,
-              duration: const Duration(seconds: 3),
+              duration: const Duration(seconds: 2),
               child: SizedBox(
                 width: 374.w,
                 child: Image.asset(
