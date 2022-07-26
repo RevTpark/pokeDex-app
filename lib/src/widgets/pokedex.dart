@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:pokedex_mobile_app/src/widgets/guess_that_pokemon.dart';
 import 'package:pokedex_mobile_app/src/widgets/home.dart';
+import 'package:pokedex_mobile_app/src/widgets/pokedex_list.dart';
 import 'package:provider/provider.dart';
 
 import '../provider/nav_provider.dart';
@@ -39,7 +40,7 @@ class _PokeDexFrameState extends State<PokeDexFrame> with TickerProviderStateMix
     List<Widget> pages = <Widget>[
       const HomeDisplay(),
       const GuessThatPokemonDisplay(),
-      const GuessThatPokemonDisplay(),
+      const PokeDexList(),
       const GuessThatPokemonDisplay()
     ];
     NavProvider provider = Provider.of<NavProvider>(context, listen: true);
