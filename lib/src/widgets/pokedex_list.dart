@@ -42,7 +42,10 @@ class _PokeDexListState extends State<PokeDexList> {
           child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                Text("${item.dexId}", style: TextStyle(color: Colors.white),overflow: TextOverflow.ellipsis,),
+                Text(
+                  "${item.dexId}",
+                  style: TextStyle(color: Colors.white),
+                  overflow: TextOverflow.ellipsis,),
                 Text(
                   item.name,
                   overflow: TextOverflow.ellipsis,
@@ -69,7 +72,6 @@ class _PokeDexListState extends State<PokeDexList> {
           future: getPokemonList(),
           builder: (context, snapshot) {
             if (snapshot.hasData) {
-              // imageUrl = snapshot.data![0].image;
               return Row(children: [
                 SizedBox(
                   height: height * 0.45.w,
