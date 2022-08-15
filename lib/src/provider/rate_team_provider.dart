@@ -15,4 +15,8 @@ class RateTeamProvider extends ChangeNotifier{
 
   List<Pokemon> get teamList => _teamList;
 
+  void updateTeamMember(int index, Pokemon newPoke){
+    _teamList[index] = newPoke;
+  }
+
 }

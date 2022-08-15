@@ -14,7 +14,7 @@ class MenuTextBox extends StatelessWidget {
   void handleClick(BuildContext context) async {
     NavProvider provider = Provider.of<NavProvider>(context, listen: false);
     provider.updateLoading();
-    await Future.delayed(const Duration(seconds: 3), () {
+    await Future.delayed(const Duration(seconds: 2), () {
       provider.changeLayout(changeTo);
     });
   }
