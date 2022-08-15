@@ -6,14 +6,15 @@ import 'package:provider/provider.dart';
 import 'package:simple_shadow/simple_shadow.dart';
 
 class MenuTextBox extends StatelessWidget {
-  const MenuTextBox({Key? key, required this.title, required this.changeTo}) : super(key: key);
+  const MenuTextBox({Key? key, required this.title, required this.changeTo, this.widthFactor=0.85}) : super(key: key);
   final String title;
   final ScreenLayout changeTo;
+  final double widthFactor;
 
   void handleClick(BuildContext context) async {
     NavProvider provider = Provider.of<NavProvider>(context, listen: false);
     provider.updateLoading();
-    await Future.delayed(const Duration(seconds: 3), () {
+    await Future.delayed(const Duration(seconds: 2), () {
       provider.changeLayout(changeTo);
     });
   }
@@ -33,7 +34,7 @@ class MenuTextBox extends StatelessWidget {
           offset: Offset(0, 0), // Default: Offset(2, 2)
           sigma: 14,
           child: Container(
-            width: width*0.85.w,
+            width: width*widthFactor.w,
             margin: EdgeInsets.only(bottom: 25.w),
             decoration: BoxDecoration(
                 color: const Color.fromRGBO(47, 188, 245, 1),

@@ -2,5 +2,6 @@ enum ScreenLayout {
   home,
   guessThatPokemon,
   pokedex,
-  rateMyTeam
+  rateMyTeam,
+  ratedTeamDisplay
 }
