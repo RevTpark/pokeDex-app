@@ -5,6 +5,7 @@ import 'package:pokedex_mobile_app/src/widgets/guess_that_pokemon.dart';
 import 'package:pokedex_mobile_app/src/widgets/home.dart';
 import 'package:pokedex_mobile_app/src/widgets/pokedex_list.dart';
 import 'package:pokedex_mobile_app/src/widgets/rate_my_team.dart';
+import 'package:pokedex_mobile_app/src/widgets/show_rated_team.dart';
 import 'package:provider/provider.dart';
 
 import '../provider/nav_provider.dart';
@@ -29,7 +30,7 @@ class _PokeDexFrameState extends State<PokeDexFrame> with TickerProviderStateMix
   void initState(){
     super.initState();
     _animationController = AnimationController(
-      duration: const Duration(seconds: 5),
+      duration: const Duration(seconds: 2),
       vsync: this,)
       ..repeat();
   }
@@ -42,7 +43,8 @@ class _PokeDexFrameState extends State<PokeDexFrame> with TickerProviderStateMix
       const HomeDisplay(),
       const GuessThatPokemonDisplay(),
       const PokeDexList(),
-      const RateMyTeamDisplay()
+      const RateMyTeamDisplay(),
+      const RatedTeamDisplay()
     ];
     NavProvider provider = Provider.of<NavProvider>(context, listen: true);
 
@@ -56,7 +58,7 @@ class _PokeDexFrameState extends State<PokeDexFrame> with TickerProviderStateMix
             child: BackdropFilter(
               filter: ImageFilter.blur(sigmaX: 2, sigmaY: 2),
               child: AnimatedContainer(
-                duration: const Duration(seconds: 2),
+                duration: const Duration(seconds: 1),
                 height: provider.loadingStatus? height*0.4: height*0.7,
                 width: width,
                 margin: EdgeInsets.only(left: 10.w, right: 10.w),
@@ -77,7 +79,7 @@ class _PokeDexFrameState extends State<PokeDexFrame> with TickerProviderStateMix
           ):Container(),
           AnimatedPositioned(
               top: provider.loadingStatus? height/4: 0,
-              duration: const Duration(seconds: 2),
+              duration: const Duration(seconds: 1),
               child: SizedBox(
                 width: 374.w,
                 child: Image.asset(
@@ -87,7 +89,7 @@ class _PokeDexFrameState extends State<PokeDexFrame> with TickerProviderStateMix
           ),
           AnimatedPositioned(
               bottom: provider.loadingStatus? height/4: 0,
-              duration: const Duration(seconds: 2),
+              duration: const Duration(seconds: 1),
               child: SizedBox(
                 width: 374.w,
                 child: Image.asset(

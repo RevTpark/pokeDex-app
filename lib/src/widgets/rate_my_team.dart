@@ -3,10 +3,10 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:pokedex_mobile_app/src/config/enums.dart';
 import 'package:pokedex_mobile_app/src/provider/rate_team_provider.dart';
 import 'package:pokedex_mobile_app/src/widgets/menu_textbox.dart';
+import 'package:pokedex_mobile_app/src/api/pokemon_service.dart';
+import 'package:pokedex_mobile_app/src/models/pokemon.dart';
 import 'package:provider/provider.dart';
 
-import '../api/pokemon_service.dart';
-import '../models/pokemon.dart';
 
 class RateMyTeamDisplay extends StatefulWidget {
   const RateMyTeamDisplay({Key? key}) : super(key: key);
@@ -25,7 +25,7 @@ class _RateMyTeamDisplayState extends State<RateMyTeamDisplay> {
     return pokemonList;
   }
 
-  List<Widget> makeRowList(data, RateTeamProvider provider) {
+  List<Widget> makeRowList(RateTeamProvider provider) {
     return provider.teamList
         .asMap()
         .map((idx, item) {
@@ -60,6 +60,13 @@ class _RateMyTeamDisplayState extends State<RateMyTeamDisplay> {
         }).values.toList();
   }
 
+  List<Widget> makePokemonListView(data){
+    return data.map<Widget>((Pokemon item) => Container(
+      color: Colors.blueGrey,
+      child: Text(item.name),
+    )).toList();
+  }
+
   @override
   Widget build(BuildContext context) {
     double height = MediaQuery.of(context).size.height;
@@ -85,10 +92,11 @@ class _RateMyTeamDisplayState extends State<RateMyTeamDisplay> {
                         height: height * 0.15.w,
                         // color: Colors.white,
                         child: SingleChildScrollView(
+                          physics: BouncingScrollPhysics(),
                           scrollDirection: Axis.horizontal,
                           child: Row(
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: makeRowList(snapshot.data, provider),
+                            children: makeRowList(provider),
                           ),
                         ),
                       ),
@@ -101,37 +109,34 @@ class _RateMyTeamDisplayState extends State<RateMyTeamDisplay> {
                           children: [
                             SizedBox(
                               width: width*0.45.w,
-                              child: Image.network(
-                                  _currentImageUrl,
-                                  errorBuilder: (context, exception, stackTrace) {
-                                  return Image.asset(
-                                    "assets/images/pokeball_loader.png",
-                                  );
-                                }
+                              child: Column(
+                                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                                children: [
+                                  Image.network(
+                                      _currentImageUrl,
+                                      errorBuilder: (context, exception, stackTrace) {
+                                      return Image.asset(
+                                        "assets/images/pokeball_loader.png",
+                                      );
+                                    }
+                                  ),
+                                  Container(
+                                      child: Text("Select Pokemon", style: TextStyle(color: Colors.white),)
+                                  )
+                                ],
                               ),
                             ),
                             SizedBox(
                               width: width * 0.5.w,
                               child: ListWheelScrollView(
+                                  physics: BouncingScrollPhysics(),
+                                  onSelectedItemChanged: (item) => {
+                                    setState(() {
+                                      _currentImageUrl = snapshot.data![item].image;
+                                    })
+                                  },
                                   itemExtent: 50,
-                                  children: [
-                                    Container(
-                                      color: Colors.blueGrey,
-                                      child: Text("Bulbasauor"),
-                                    ),
-                                    Container(
-                                      color: Colors.blueGrey,
-                                      child: Text("Bulbasauor"),
-                                    ),
-                                    Container(
-                                      color: Colors.blueGrey,
-                                      child: Text("Bulbasauor"),
-                                    ),
-                                    Container(
-                                      color: Colors.blueGrey,
-                                      child: Text("Bulbasauor"),
-                                    ),
-                                  ]
+                                  children: makePokemonListView(snapshot.data)
                               ),
                             )
                           ],
@@ -150,7 +155,7 @@ class _RateMyTeamDisplayState extends State<RateMyTeamDisplay> {
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: const[
             MenuTextBox(title: "Home", changeTo: ScreenLayout.home, widthFactor: 0.45,),
-            MenuTextBox(title: "Get Ranked", changeTo: ScreenLayout.home, widthFactor: 0.45,)
+            MenuTextBox(title: "Get Ranked", changeTo: ScreenLayout.ratedTeamDisplay, widthFactor: 0.45,)
           ],
         )
       ],

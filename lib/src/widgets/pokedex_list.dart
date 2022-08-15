@@ -3,8 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:pokedex_mobile_app/src/api/pokemon_service.dart';
 import 'package:pokedex_mobile_app/src/config/enums.dart';
 import 'package:pokedex_mobile_app/src/widgets/menu_textbox.dart';
-
-import '../models/pokemon.dart';
+import 'package:pokedex_mobile_app/src/models/pokemon.dart';
 
 class PokeDexList extends StatefulWidget {
   const PokeDexList({Key? key}) : super(key: key);
@@ -90,8 +89,8 @@ class _PokeDexListState extends State<PokeDexList> {
                   margin: const EdgeInsets.only(bottom: 15),
                   child: ListWheelScrollView(
                       itemExtent: 75,
-                      magnification: 1.1,
-                      useMagnifier: true,
+                      // magnification: 1.1,
+                      // useMagnifier: true,
                       diameterRatio: 2.0,
                       squeeze: 1.4,
                       physics: FixedExtentScrollPhysics(),
