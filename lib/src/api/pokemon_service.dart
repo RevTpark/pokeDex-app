@@ -11,8 +11,8 @@ class PokemonService{
       'Content-Type': 'application/json'
     };
     BaseOptions options = BaseOptions(
-      receiveTimeout: 50000,
-      connectTimeout: 50000,
+      receiveTimeout: Duration(seconds: 5),
+      connectTimeout: Duration(seconds: 5),
       headers: requestHeaders,
     );
 
@@ -32,8 +32,8 @@ class PokemonService{
       'Content-Type': 'application/json'
     };
     BaseOptions options = BaseOptions(
-      receiveTimeout: 50000,
-      connectTimeout: 50000,
+      receiveTimeout: Duration(seconds: 5),
+      connectTimeout: Duration(seconds: 5),
       headers: requestHeaders,
     );
 
@@ -54,8 +54,8 @@ class PokemonService{
       'Content-Type': 'application/json'
     };
     BaseOptions options = BaseOptions(
-      receiveTimeout: 50000,
-      connectTimeout: 50000,
+      receiveTimeout: Duration(seconds: 5),
+      connectTimeout: Duration(seconds: 5),
       headers: requestHeaders,
     );
 
@@ -79,8 +79,8 @@ class PokemonService{
       'Content-Type': 'application/json'
     };
     BaseOptions options = BaseOptions(
-      receiveTimeout: 50000,
-      connectTimeout: 50000,
+      receiveTimeout: Duration(seconds: 5),
+      connectTimeout: Duration(seconds: 5),
       headers: requestHeaders,
     );
 
@@ -101,8 +101,8 @@ class PokemonService{
       'Content-Type': 'application/json'
     };
     BaseOptions options = BaseOptions(
-      receiveTimeout: 50000,
-      connectTimeout: 50000,
+      receiveTimeout: Duration(seconds: 5),
+      connectTimeout: Duration(seconds: 5),
       headers: requestHeaders,
     );
 
