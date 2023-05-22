@@ -32,8 +32,8 @@ class PokemonService{
       'Content-Type': 'application/json'
     };
     BaseOptions options = BaseOptions(
-      receiveTimeout: Duration(seconds: 5),
-      connectTimeout: Duration(seconds: 5),
+      receiveTimeout: const Duration(seconds: 5),
+      connectTimeout: const Duration(seconds: 5),
       headers: requestHeaders,
     );
 
@@ -115,6 +115,28 @@ class PokemonService{
       print(e);
       throw Exception("Search Pokemon By Type Failed!!");
     }
+  }
+
+  Future<Map<String, dynamic>> getGenerations() async{
+    String url = "${Const.baseUrl}/api/generations";
+    Map<String, dynamic> requestHeaders = {
+      'Content-Type': 'application/json'
+    };
+    BaseOptions options = BaseOptions(
+      receiveTimeout: Duration(seconds: 5),
+      connectTimeout: Duration(seconds: 5),
+      headers: requestHeaders,
+    );
+
+    try {
+      final response = await Dio(options).get(url);
+      Map<String, dynamic> data =  response.data;
+      return data;
+    }
+    on DioError catch (e) {
+      print(e);
+      throw Exception("Generations API Failed!!");
+    } 
   }
 
 }
