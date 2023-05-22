@@ -108,7 +108,10 @@ class _PokeDexListState extends State<PokeDexList> {
             } else {
               return Container(
                   padding: const EdgeInsets.all(10.0),
-                  child: const CircularProgressIndicator()
+                  height: height*0.45.w,
+                  child: const Center(
+                    child: CircularProgressIndicator()
+                  )
               );
             }
           },
