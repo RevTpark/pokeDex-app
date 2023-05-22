@@ -1,4 +1,4 @@
 
 class Const{
-  static const baseUrl = "https://project-dex.herokuapp.com";
+  static const baseUrl = "https://pokedex-4thp.onrender.com";
 }
