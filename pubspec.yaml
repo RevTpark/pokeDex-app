@@ -38,9 +38,13 @@ dependencies:
   simple_shadow: ^0.3.0
   flutter_screenutil: ^5.5.3+2
   provider: ^6.0.3
-  tflite_flutter: ^0.9.5
   image_picker: ^0.8.5+3
   image: ^4.0.17
+  tflite_flutter: 0.9.5
+  tflite_flutter_helper:
+    git:
+      url: https://github.com/pnyompen/tflite_flutter_helper.git
+      ref: 43e87d4b9627539266dc20250beb35bf36320dce
 
 flutter_icons:
   android: true
