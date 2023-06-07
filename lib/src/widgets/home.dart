@@ -13,6 +13,7 @@ class HomeDisplay extends StatelessWidget {
       children: const [
         MenuTextBox(title: "Guess That Pokemon!",changeTo: ScreenLayout.guessThatPokemon),
         MenuTextBox(title: "Pokedex", changeTo: ScreenLayout.pokedex),
+        MenuTextBox(title: "Search Dex", changeTo: ScreenLayout.searchDex),
         MenuTextBox(title: "Rate My Team", changeTo: ScreenLayout.rateMyTeam)
       ],
     );

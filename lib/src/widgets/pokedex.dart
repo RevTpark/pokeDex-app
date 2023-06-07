@@ -5,6 +5,7 @@ import 'package:pokedex_mobile_app/src/widgets/guess_that_pokemon.dart';
 import 'package:pokedex_mobile_app/src/widgets/home.dart';
 import 'package:pokedex_mobile_app/src/widgets/pokedex_list.dart';
 import 'package:pokedex_mobile_app/src/widgets/rate_my_team.dart';
+import 'package:pokedex_mobile_app/src/widgets/search_dex.dart';
 import 'package:pokedex_mobile_app/src/widgets/show_rated_team.dart';
 import 'package:provider/provider.dart';
 
@@ -44,7 +45,8 @@ class _PokeDexFrameState extends State<PokeDexFrame> with TickerProviderStateMix
       const GuessThatPokemonDisplay(),
       const PokeDexList(),
       const RateMyTeamDisplay(),
-      const RatedTeamDisplay()
+      const RatedTeamDisplay(),
+      const SearchDex()
     ];
     NavProvider provider = Provider.of<NavProvider>(context, listen: true);
 
